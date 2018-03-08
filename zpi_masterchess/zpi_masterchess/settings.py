@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-	'masterchess',
+	'chessgames',
+	'chesslogic',
+	'chessplayers',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,8 +57,10 @@ ROOT_URLCONF = 'zpi_masterchess.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+			os.path.join(BASE_DIR, 'templates/'),
+		],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -66,6 +70,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+STATICFILES_DIRS = [
+	os.path.join(BASE_DIR, 'static/'),
 ]
 
 WSGI_APPLICATION = 'zpi_masterchess.wsgi.application'
