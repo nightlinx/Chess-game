@@ -1,3 +1,13 @@
-{% load static %}
-<h1>Hello world</h1>
-<img src="{% static 'img/test.png' %}" alt="Static img" />
+{% load render_bundle from webpack_loader %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Django Vue</title>
+</head>
+<body>
+    <div id="app">
+        <demo></demo>
+    </div>
+    {% render_bundle 'main' %}
+</body>
+</html>
