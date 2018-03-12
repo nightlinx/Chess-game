@@ -1,13 +1,97 @@
-{% load render_bundle from webpack_loader %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Django Vue</title>
-</head>
-<body>
-    <div id="app">
-        <demo></demo>
+
+{% verbatim %}
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+   <title>VueJS</title>
+   <link rel="stylesheet" href="/static/styles.css" type="text/css">
+   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+ </head>
+ <body>
+    <div id="exercise">
+
+      <p> 1) Start the Effect with the Button. The Effect should alternate
+      the "highlight" or "shrink" class on each new setInterval tick
+      (attach respective class to the div with id "effect" below) </p>
+      <div>
+        <button @click="startEffect">Start Effect</button>
+        <div id="effect" v-bind:class="[{highlight: attachHighlight}, {shrink: attachShrink}]"></div>
+      </div>
+
+      <p> 2) Create a couple of CSS classes and attach them via
+      the array syntax </p>
+      <div v-bind:class="[attachBorder, makeCircle]"></div>
+
+      <p> 3) Let the user enter a class (create some example classes)
+       and attach it </p>
+      <div>
+        <div v-bind:class="yourClass">ANIA</div>
+        <input type="text" v-model="yourClass">
+      </div>
+
+      <p> 4) Let the user enter a class and enter true/ false for another
+       class (create some example classes) and attach the classes </p>
+      <div>
+        <p>class?</p>
+        <input type="text" v-model="setClass">
+        <p>gradient?</p>
+        <input type="checkbox" v-model="attachGradient">
+        <div v-bind:class='[setClass, {gradient: attachGradient}]'>ELEMENT</div>
+      </div>
+
+      <p> 5) Repeat 3) but now with values for styles (instead of class names).
+         Attach the respective styles.  </p>
+      <div>
+        <input type="text" v-model="yourValue" placeholder="color">
+        <div v-bind:style='{color: yourValue}'>Some Text</div>
+      </div>
+
+      <p> 6) Create a simple progress bar with setInterval and style bindings.
+        Start it by hitting the below button.</p>
+      <div>
+        <button v-on:click="startProgress">Start Progress</button>
+        <div id="progressBar" v-bind:style='{width: width}'></div>
+      </div>
+        <h1>{{ attachBorder }}</h1>
     </div>
-    {% render_bundle 'main' %}
-</body>
+    <script>
+     new Vue({
+       el: '#exercise',
+       data: {
+         attachHighlight: true,
+         attachShrink: false,
+         attachBorder: 'border',
+         makeCircle: 'circle',
+         yourClass: 'border',
+         setClass: '',
+         attachGradient: false,
+         yourValue: '',
+         progress: 0,
+         width: ''
+       },
+       computed: {
+
+       },
+       methods: {
+         startEffect: function() {
+           vm = this;
+           setInterval(function() {
+             vm.attachHighlight = ! vm.attachHighlight;
+             vm.attachShrink = ! vm.attachShrink;
+           }, 1000);
+         },
+         startProgress: function() {
+           vm = this;
+           setInterval(function() {
+             vm.progress = vm.progress + 5;
+             if(vm.progress>300){vm.progress=0;}
+             vm.width = vm.progress + 'px';
+           }, 50);
+         }
+       },
+     });
+     </script>
+    </body>
 </html>
+{% endverbatim %}
