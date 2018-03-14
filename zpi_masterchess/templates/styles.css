@@ -12,11 +12,19 @@ header {
   background-color: #007791;
   padding: 8px;
   color: #F2F2F2;
+  height: 25px;
+}
+header button {
+  float: right;
+  padding: 5px 10px;
+  font-size: 80%;
+  margin-right: 10px;
+  width: 100px;
 }
 
 #logo {
   display: inline-block;
-  margin: 0;
+  margin: 2px 10px;
 }
 
 footer {
@@ -28,7 +36,7 @@ footer {
 button {
 	font-family: Roboto;
   border: none;
-  padding: 8px 10px;
+  padding: 8px 35px;
   border-radius: 3px;
   cursor: pointer;
   display: inline-block;
@@ -108,9 +116,14 @@ button.red:hover{
   cursor: pointer;
 }
 
+.howToPlay:hover{
+  background-color: #003845;
+}
+
 .moreInfo{
   grid-area: moreInfo;
   font-size: 14px;
   text-align: left;
   border-bottom: 10px solid #003845;
+  border-radius: 5px;
 }
