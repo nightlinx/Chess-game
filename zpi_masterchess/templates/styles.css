@@ -1,6 +1,7 @@
 body {
   margin: 0px;
 	font-family: Roboto;
+  background-color:  #E0E0E0;
 }
 
 content {
@@ -9,35 +10,61 @@ content {
 
 header {
   background-color: #007791;
-  padding: 10px;
+  padding: 8px;
   color: #F2F2F2;
 }
+
+#logo {
+  display: inline-block;
+  margin: 0;
+}
+
 footer {
   background-color: #003845;
   padding: 10px;
   color: #F2F2F2;
 }
+
+button {
+	font-family: Roboto;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button.red{
+  background-color: #EC5252;
+  color: #F2F2F2;
+}
+
+button.red:hover{
+  background-color: #992337;
+  color: #F2F2F2;
+}
+
 .wrapper{
   text-align: center;
   background-color:  #E0E0E0;
   color: #444;
+  margin: 5px 0;
 }
 
 .wrapper {
   display: grid;
   grid-gap: 5px;
   grid-template-areas:
-     "header"
-     "left-navbar"
-     "right-navbar"
-     "sidebar"
-     "column1"
-     "column2"
-     "footer"
+     "menu"
+     "chess"
+     "infoGame"
+     "howToPlay"
+     "moreInfo"
 }
 
-@media only screen and (min-width: 800px)  {
+@media only screen and (min-width: 650px)  {
 .wrapper {
+    grid-gap: 5px;
     grid-template-columns: auto 200px 200px 200px auto;
     grid-template-areas:
     "... menu menu menu ..."
@@ -48,7 +75,7 @@ footer {
 }
 
 .box {
-  padding: 15px;
+  padding: 8px;
 }
 
 .chess, .infoGame, .howToPlay {
@@ -65,6 +92,7 @@ footer {
   grid-area: chess;
   background-color: #aaaaaa;
   height: 400px;
+  min-width: 400px;
 }
 
 .infoGame{
@@ -76,14 +104,13 @@ footer {
   grid-area: howToPlay;
   background-color: #007791;
   color: #F2F2F2;
+  text-align: left;
+  cursor: pointer;
 }
 
 .moreInfo{
   grid-area: moreInfo;
-}
-
-
-.footer{
-  grid-area: footer;
-  background-color: #999;
+  font-size: 14px;
+  text-align: left;
+  border-bottom: 10px solid #003845;
 }

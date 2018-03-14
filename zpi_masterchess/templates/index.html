@@ -2,21 +2,38 @@
 <html lang='pl'>
 <head>
 	<meta charset='utf-8'>
-	<title>Play with grid</title>
+	<title>MasterChess</title>
 	<link href='styles.css' rel='stylesheet'/>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
 </head>
 <body>
 
-<div class="content">
-  <header>MasterChess</header>
+<div id="content">
+  <header>
+    <p id="logo">Master<span style="font-weight: bold;">Chess</span></p>
+    <button class="red">Wyloguj</button>
+  </header>
   <div class="wrapper">
-    <div class="box menu">menu</div>
+    <div class="box menu"></div>
     <div class="box chess">chess</div>
-    <div class="box infoGame">Info game</div>
-    <div class="box howToPlay">howToPlay</div>
-    <div class="box moreInfo">moreInfo</div>
+    <div class="box infoGame">Twój ruch</div>
+    <div class="box howToPlay" v-on:click="showInfo =! showInfo">Jak grać?</div>
+    <div class="box moreInfo" v-if="showInfo">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
+      Curabitur et ligula. Ut molestie a, ultricies porta urna.</br></br>
+      Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum.</br></br>
+    </div>
   </div>
-  <footer class="box">Footer</footer>
+  <footer class="box"><button class="red">{{ showInfo }} Zakończ rozgrywkę</button></footer>
 </div>
+
+  <script>
+    new Vue({
+      el: '#content',
+      data: {
+        showInfo: false;
+      }
+    });
+  </script>
 </body>
+</html>
