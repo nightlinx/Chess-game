@@ -1,50 +1,89 @@
-#effect {
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
+body {
+  margin: 0px;
+	font-family: Roboto;
 }
 
-.highlight {
-  background-color: red;
-  width: 200px !important;
+content {
+  margin: 0px 30px;
 }
 
-.shrink {
-  background-color: gray;
-  width: 50px !important;
-}
-
-.border {
-  border: 3px solid deepPink;
-}
-
-.circle {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
+header {
+  background-color: #007791;
   padding: 10px;
-  background-color: lightPink;
+  color: #F2F2F2;
+}
+footer {
+  background-color: #003845;
+  padding: 10px;
+  color: #F2F2F2;
+}
+.wrapper{
+  text-align: center;
+  background-color:  #E0E0E0;
+  color: #444;
 }
 
-.green{
-  background-color: green;
+.wrapper {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-areas:
+     "header"
+     "left-navbar"
+     "right-navbar"
+     "sidebar"
+     "column1"
+     "column2"
+     "footer"
 }
 
-.yellow{
-  background-color: yellow;
+@media only screen and (min-width: 800px)  {
+.wrapper {
+    grid-template-columns: auto 200px 200px 200px auto;
+    grid-template-areas:
+    "... menu menu menu ..."
+    "... chess chess infoGame ..."
+    "... howToPlay howToPlay howToPlay ..."
+    "... moreInfo moreInfo moreInfo ..."
+}
 }
 
-.large{
-  font-size: 200%;
+.box {
+  padding: 15px;
 }
 
-.gradient{
-  background: linear-gradient(red, yellow)
+.chess, .infoGame, .howToPlay {
+  border-radius: 5px;
 }
 
-#progressBar {
-  margin: 10px 0;
-  width: 0px;
-  height: 20px;
-  background-color: tomato;
+.menu {
+  grid-area: menu;
+  background-color: #E0E0E0;
+  color: black;
+}
+
+.chess {
+  grid-area: chess;
+  background-color: #aaaaaa;
+  height: 400px;
+}
+
+.infoGame{
+  grid-area: infoGame;
+  background-color: #F7F7F7;
+}
+
+.howToPlay{
+  grid-area: howToPlay;
+  background-color: #007791;
+  color: #F2F2F2;
+}
+
+.moreInfo{
+  grid-area: moreInfo;
+}
+
+
+.footer{
+  grid-area: footer;
+  background-color: #999;
 }
