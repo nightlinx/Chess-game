@@ -134,6 +134,7 @@ div.field {
   height: 50px;
   float: left;
   display: inline;
+  box-sizing: border-box;
 }
 
 div.white{
@@ -141,4 +142,9 @@ div.white{
 }
 div.black{
   background-color: #444;
+}
+
+
+div.field.greenBorder {
+  border: 3px solid green;
 }

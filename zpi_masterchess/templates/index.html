@@ -18,8 +18,7 @@
     <div class="box menu"></div>
     <div class="box chess">
 			<span v-for="(field, index) in board">
-				 <div v-if="(index+field.row)%2 == 0" v-html="blackField"></div>
-				 <div v-else v-html="whiteField"></div>
+					<div v-on:click="selectField()" :class="['field', field.color, {greenBorder: isFieldSelected}]"></div>
 			 </span>
 		</div>
     <div class="box infoGame">Twój ruch</div>
@@ -37,16 +36,23 @@
       data: {
         showInfo: false,
 				board: [],
-				blackField: `<div class="field black"></div>`,
-				whiteField: `<div class="field white"></div>`
+				isFieldSelected: true,
       },
 			methods: {
 				fillBoard() {
+					var fieldCol = 'white';
 					for(var r=0; r < 8; r++){
 						for(var c=0; c < 8; c++){
-							this.board.push({ free: true, row: r});
+							if(((c+r)%2)==0) {
+								fieldCol = 'black';
+							}
+							else { fieldCol = 'white'; }
+							this.board.push({ free: true, color: fieldCol});
 						}
 					}
+				},
+				selectField() {
+					this.selectedField =! this.selectedField;
 				}
 			},
 			beforeMount(){
