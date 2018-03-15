@@ -17,7 +17,10 @@
   <div class="wrapper">
     <div class="box menu"></div>
     <div class="box chess">
-			<span v-for="n in board"> {{ n.free }}</span>
+			<span v-for="(field, index) in board">
+				 <div v-if="(index+field.row)%2 == 0" v-html="blackField"></div>
+				 <div v-else v-html="whiteField"></div>
+			 </span>
 		</div>
     <div class="box infoGame">Twój ruch</div>
     <div class="box howToPlay" v-on:click="showInfo =! showInfo">Jak grać?</div>
@@ -33,12 +36,16 @@
       el: '#content',
       data: {
         showInfo: false,
-				board: [{free: false}]
+				board: [],
+				blackField: `<div class="field black"></div>`,
+				whiteField: `<div class="field white"></div>`
       },
 			methods: {
 				fillBoard() {
-					for(var i=0; i < 64; i++){
-						this.board.push({ free: true });
+					for(var r=0; r < 8; r++){
+						for(var c=0; c < 8; c++){
+							this.board.push({ free: true, row: r});
+						}
 					}
 				}
 			},

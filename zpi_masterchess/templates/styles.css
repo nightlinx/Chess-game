@@ -86,7 +86,7 @@ button.red:hover{
   padding: 8px;
 }
 
-.chess, .infoGame, .howToPlay {
+.infoGame, .howToPlay {
   border-radius: 5px;
 }
 
@@ -100,7 +100,8 @@ button.red:hover{
   grid-area: chess;
   background-color: #aaaaaa;
   height: 400px;
-  min-width: 400px;
+  width: 400px;
+  padding: 0px;
 }
 
 .infoGame{
@@ -126,4 +127,18 @@ button.red:hover{
   text-align: left;
   border-bottom: 10px solid #003845;
   border-radius: 5px;
+}
+
+div.field {
+  width: 50px;
+  height: 50px;
+  float: left;
+  display: inline;
+}
+
+div.white{
+  background-color: white;
+}
+div.black{
+  background-color: #444;
 }
