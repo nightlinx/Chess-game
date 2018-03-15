@@ -16,7 +16,9 @@
   </header>
   <div class="wrapper">
     <div class="box menu"></div>
-    <div class="box chess">chess</div>
+    <div class="box chess">
+			<span v-for="n in board"> {{ n.free }}</span>
+		</div>
     <div class="box infoGame">Twój ruch</div>
     <div class="box howToPlay" v-on:click="showInfo =! showInfo">Jak grać?</div>
     <div class="box moreInfo" v-if="showInfo">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
@@ -30,8 +32,19 @@
     new Vue({
       el: '#content',
       data: {
-        showInfo: false
-      }
+        showInfo: false,
+				board: [{free: false}]
+      },
+			methods: {
+				fillBoard() {
+					for(var i=0; i < 64; i++){
+						this.board.push({ free: true });
+					}
+				}
+			},
+			beforeMount(){
+	 			this.fillBoard()
+			},
     });
   </script>
 </body>
