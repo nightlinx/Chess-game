@@ -21,10 +21,20 @@
 					<span :id="index" v-html="field.htmlElem"></span>
 			</template>
 		</div>
-    <div class="box infoGame">Twój ruch
-			<p>
-					{{ x }} {{ y }}
-			</p>
+    <div class="box infoGame info-game-wrapper">
+			<div class="moveHeader">Twój ruch</div>
+			<div class="player1">
+					<span>Kasia98</span><br>
+					<span class="score">0p</span>
+			</div>
+			<div class="player2">
+					<span>Marek</span><br>
+					<span class="score">0p</span>
+			</div>
+			<div class="box figureDescription" v-on:click="showDescription =! showDescription">Skoczek - opis</div>
+	    <div class="box figureDescriptionMore" v-if="showDescription">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
+				Skoczek jako jedyna figura szachowa może przeskakiwać nad innymi bierkami (zarówno swoimi, jak i przeciwnika). W dodatku jest jedyną figurą posiadającą taki ruch. Cecha ta powoduje, że nadaje się on doskonale do wykonania podwójnego uderzenia. Co ciekawe, jest to jedyna figura, która może zaatakować hetmana pozostając jednocześnie poza jego zasięgiem.
+			</div>
 		</div>
     <div class="box howToPlay" v-on:click="showInfo =! showInfo">Jak grać?</div>
     <div class="box moreInfo" v-if="showInfo">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
@@ -32,12 +42,13 @@
       Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum.</br></br>
     </div>
   </div>
-  <footer><button class="red">Zakończ rozgrywkę</button></footer>
+  <footer class="footer"><button class="red">Zakończ rozgrywkę</button></footer>
 </div>
   <script>
     new Vue({
       el: '#content',
       data: {
+				showDescription: false,
         showInfo: false,
 				board: [],
 				x: 0,

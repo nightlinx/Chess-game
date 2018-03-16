@@ -52,6 +52,35 @@ button.red:hover{
   color: #F2F2F2;
 }
 
+button.full {
+    width:100%;
+}
+
+span.score {
+  font-size: 40px;
+  padding: 10px;
+  font-weight: lighter;
+  font-family: Roboto;
+}
+
+span.score:after{
+  content:"";
+  opacity: 0.0;
+}
+
+span.score:hover:after {
+  content:"";
+  float:left;
+  background: #007791;
+  width:100%;
+  height:4px;
+  border-radius: 3px;
+  opacity: 1.0;
+  webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
+}
+
+
 .wrapper{
   text-align: center;
   background-color:  #E0E0E0;
@@ -70,6 +99,74 @@ button.red:hover{
      "moreInfo"
 }
 
+.info-game-wrapper {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(2, [col] 50% ) ;
+  grid-template-rows: 40px 80px 30px 100%;
+  grid-template-areas:
+     "moveHeader"
+     "player1"
+     "player2"
+     "figureDescription"
+     "figureDescriptionMore"
+}
+
+.moveHeader, .figureDescription{
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.moveHeader {
+  padding: auto;
+  grid-area: moveHeader;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 1;
+  line-height: 40px;
+}
+
+.player1 {
+  grid-area: player1;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.player2 {
+  grid-area: player2;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.figureDescription{
+  grid-area: figureDescription;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 3;
+  background-color: #EC5252;
+  color: #F2F2F2;
+  cursor: pointer;
+  line-height: 15px;
+}
+
+.figureDescription:hover{
+  background-color: #992337;
+  color: #F2F2F2;
+}
+
+.figureDescriptionMore{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 4;
+  font-size: 14px;
+  text-align: left;
+  border-bottom: 10px solid  #EC5252;
+  border-radius: 5px;
+  max-height: 185px;
+  overflow-y: scroll;
+}
+
 @media only screen and (min-width: 650px)  {
 .wrapper {
     grid-gap: 5px;
@@ -86,7 +183,7 @@ button.red:hover{
   padding: 8px;
 }
 
-.infoGame, .howToPlay {
+.infoGame, .howToPlay, .figureDescription {
   border-radius: 5px;
 }
 
@@ -147,4 +244,10 @@ div.black{
 
 div.field.greenBorder {
   border: 4px solid green;
+}
+
+.footer {
+    position:fixed;
+    bottom:0;
+    width: 100%
 }
