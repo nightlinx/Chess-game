@@ -1,0 +1,78 @@
+@import "../_variables.scss";
+
+.wrapper{
+  text-align: center;
+  background-color:  #E0E0E0;
+  color: #444;
+  margin: 5px 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-areas:
+     "menu"
+     "chess"
+     "infoGame"
+     "howToPlay"
+     "moreInfo"
+}
+
+@media only screen and (min-width: 650px)  {
+.wrapper {
+    grid-gap: 5px;
+    grid-template-columns: auto 200px 200px 200px auto;
+    grid-template-areas:
+    "... menu menu menu ..."
+    "... chess chess infoGame ..."
+    "... howToPlay howToPlay howToPlay ..."
+    "... moreInfo moreInfo moreInfo ..."
+}
+}
+
+.box {
+  padding: 8px;
+}
+
+.infoGame, .howToPlay, .figureDescription {
+  border-radius: 5px;
+}
+
+.menu {
+  grid-area: menu;
+  background-color: #E0E0E0;
+  color: black;
+}
+
+.chess {
+  grid-area: chess;
+  height: 400px;
+  width: 400px;
+  padding: 0px;
+}
+
+.infoGame{
+  grid-area: infoGame;
+  background-color: #F7F7F7;
+}
+
+.howToPlay{
+  grid-area: howToPlay;
+  background-color: #007791;
+  color: #F2F2F2;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover
+  {
+    background-color: #003845;
+  }
+}
+
+.moreInfo{
+  grid-area: moreInfo;
+  font-size: 14px;
+  text-align: left;
+  border-bottom: 10px solid #003845;
+  border-radius: 5px;
+}
