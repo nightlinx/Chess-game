@@ -16,12 +16,16 @@
   </header>
   <div class="wrapper">
     <div class="box menu"></div>
-    <div class="box chess">
-			<span v-for="(field, index) in board">
-					<div v-on:click="selectField()" :class="['field', field.color, {greenBorder: isFieldSelected}]"></div>
-			 </span>
+    <div class="box chess" v-on:click='updateCoordinates'>
+			<template v-for="(field, index) in board">
+					<span :id="index" v-html="field.htmlElem"></span>
+			</template>
 		</div>
-    <div class="box infoGame">Twój ruch</div>
+    <div class="box infoGame">Twój ruch
+			<p>
+					{{ x }} {{ y }}
+			</p>
+		</div>
     <div class="box howToPlay" v-on:click="showInfo =! showInfo">Jak grać?</div>
     <div class="box moreInfo" v-if="showInfo">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
       Curabitur et ligula. Ut molestie a, ultricies porta urna.</br></br>
@@ -36,7 +40,8 @@
       data: {
         showInfo: false,
 				board: [],
-				isFieldSelected: true,
+				x: 0,
+				y: 0,
       },
 			methods: {
 				fillBoard() {
@@ -46,17 +51,27 @@
 							if(((c+r)%2)==0) {
 								fieldCol = 'black';
 							}
-							else { fieldCol = 'white'; }
-							this.board.push({ free: true, color: fieldCol});
+							else {
+								fieldCol = 'white';
+							}
+							var html = "<div class='field " + fieldCol + "'></div>";
+							this.board.push({ free: true, color: fieldCol, htmlElem: html, isSelected: false});
 						}
 					}
 				},
+				updateCoordinates: function(ev) {
+					this.x = ev.clientX;
+					this.y = ev.clientY;
+				},
 				selectField() {
-					this.selectedField =! this.selectedField;
-				}
+					var field = this.board[40];
+					field.isSelected = true;
+					field.htmlElem = "<div class='field " + field.color + " greenBorder'></div>";
+					}
 			},
 			beforeMount(){
-	 			this.fillBoard()
+	 			this.fillBoard();
+				this.selectField();
 			},
     });
   </script>
