@@ -2,8 +2,8 @@
 
 .wrapper{
   text-align: center;
-  background-color:  #E0E0E0;
-  color: #444;
+  background-color:  $body-background-color;
+  color: $black-field-color;
   margin: 5px 0;
 }
 
@@ -40,7 +40,7 @@
 
 .menu {
   grid-area: menu;
-  background-color: #E0E0E0;
+  background-color: $body-background-color;
   color: black;
 }
 
@@ -53,12 +53,12 @@
 
 .infoGame{
   grid-area: infoGame;
-  background-color: #F7F7F7;
+  background-color: $panel-background-color;
 }
 
 .howToPlay{
   grid-area: howToPlay;
-  background-color: #007791;
+  background-color: $blue-color-primary;
   color: #F2F2F2;
   text-align: left;
   cursor: pointer;
