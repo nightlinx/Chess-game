@@ -1,0 +1,55 @@
+﻿<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+	<h2>{{ chessgame }}</h2>
+
+	<table class="table table-bordered">
+	<tr>
+	{% for chessfield in chessgame.chessfield_set.all %}
+		<td style="width: 64px; height: 64px; font-size: 10px;">
+			{{ chessfield.id_on_board }}<br />
+			row:{{ chessfield.row }} col:{{ chessfield.column }}<br />
+			{% if chessfield.chesspiece %}
+				<strong>{{ chessfield.chesspiece.type.name }}</strong><br />
+				<strong>{{ chessfield.chesspiece.side.get_color_display }}</strong> ({{ chessfield.chesspiece.side.player.username }})
+			{% endif %}
+		</td>
+		{% if forloop.counter|divisibleby:8 %}
+		</tr><tr>
+		{% endif %}
+	{% empty %}
+		<p>Brak pól</p>
+	{% endfor %}
+	</tr>
+	</table>
+
+	{% for side in chessgame.side_set.all %}
+	<h3>{{side.get_color_display}} ({{side.player.username}}) - punktów: {{side.points}}</h3>
+	<table class="table">
+		<tr>
+			<th>id</th>
+			<th>time</th>
+			<th>destination</th>
+			<th>moved_piece</th>
+			<th>captured_piece</th>
+		</tr>
+		{% for move in side.moves %}
+		<tr>
+			<td>{{ move.id }}</td>
+			<td>{{ move.time }}</td>
+			<td>{{ move.destination }}</td>
+			<td>{{ move.moved_piece }}</td>
+			<td>{{ move.captured_piece }}</td>
+		</tr>
+		{% empty %}
+			<tr><td>Brak ruchów</td></tr>
+		{% endfor %}
+	</table>
+	{% empty %}
+	<p>Brak stron</p>
+	{% endfor %}
+	</div>
+</body>

@@ -18,8 +18,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from chesslogic.views import chessboard_debug_view
 
 urlpatterns = [
 	path('', TemplateView.as_view(template_name="index.html")),
+	path('debug/chessgame/<int:pk>/', chessboard_debug_view),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

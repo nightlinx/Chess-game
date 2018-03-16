@@ -34,7 +34,6 @@ INSTALLED_APPS = [
 	'chessgames',
 	'chesslogic',
 	'chessplayers',
-	'webpack_loader',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,7 +60,7 @@ TEMPLATES = [
         'DIRS': [
 			os.path.join(BASE_DIR, 'templates/'),
 		],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -75,15 +74,8 @@ TEMPLATES = [
 
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'static/'),
-	os.path.join(BASE_DIR, 'assets'),
+	os.path.join(BASE_DIR, 'assets/'),
 ]
-
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
 
 WSGI_APPLICATION = 'zpi_masterchess.wsgi.application'
 

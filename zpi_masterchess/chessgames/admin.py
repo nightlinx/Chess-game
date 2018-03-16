@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import ChessGame, Side, DifficultyLevel
 
-# Register your models here.
+admin.site.register(ChessGame)
+admin.site.register(Side)
+admin.site.register(DifficultyLevel)
