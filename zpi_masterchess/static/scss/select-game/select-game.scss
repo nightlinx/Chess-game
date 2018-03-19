@@ -1,0 +1,38 @@
+@import "../_variables.scss";
+
+.box-header
+{
+  background-color: $red-color-primary;
+  color: $white-text-color;
+  text-align: center;
+  vertical-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 100%;
+}
+
+.box-content
+{
+  background-color: $panel-background-color;
+  padding: 50px;
+}
+
+.button-option
+{
+  font-family: $font-family-main;
+  color: $black-text-color;
+  background-color: $body-background-color;
+  text-align: center;
+  vertical-align: center;
+  line-height: 100px;
+  height: 100px;
+  width: 100%;
+}
+
+.box-footer
+{
+  height: 10px;
+  width: 100%;
+  background-color: $red-color-secondary;
+  color: $white-text-color;
+}
