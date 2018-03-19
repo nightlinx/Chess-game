@@ -22,7 +22,7 @@ class ChessPiece(models.Model):
 		
 	def get_valid_moves(self):
 		pass
-		
+				
 	def is_move_valid(self, destination):
 		pass
 		
