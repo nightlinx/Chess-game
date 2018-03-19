@@ -6,6 +6,7 @@
 	<link href='../static/styles.css' rel='stylesheet'/>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 </head>
 <body>
 
@@ -23,13 +24,14 @@
 		</div>
     <div class="box infoGame info-game-wrapper">
 			<div class="moveHeader">Twój ruch</div>
+
 			<div class="player1">
 					<span>Kasia98</span><br>
-					<span class="score">0p</span>
+					<span class="score">0<span>p<span></span>
 			</div>
 			<div class="player2">
 					<span>Marek</span><br>
-					<span class="score">0p</span>
+					<span class="score">0<span>p</span></span>
 			</div>
 			<div class="box figureDescription" v-on:click="showDescription =! showDescription">Skoczek - opis</div>
 	    <div class="box figureDescriptionMore" v-if="showDescription">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
