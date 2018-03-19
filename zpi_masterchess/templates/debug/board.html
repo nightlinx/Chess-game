@@ -13,8 +13,8 @@
 			{{ chessfield.id_on_board }}<br />
 			row:{{ chessfield.row }} col:{{ chessfield.column }}<br />
 			{% if chessfield.chesspiece %}
-				<strong>{{ chessfield.chesspiece.type.name }}</strong><br />
-				<strong>{{ chessfield.chesspiece.side.get_color_display }}</strong> ({{ chessfield.chesspiece.side.player.username }})
+				<strong style="font-size: 13px;">{{ chessfield.chesspiece.type.name }}</strong><br />
+				<strong style="font-size: 12px;">{{ chessfield.chesspiece.side.get_color_display }}</strong> ({{ chessfield.chesspiece.side.player.username }})
 			{% endif %}
 		</td>
 		{% if forloop.counter|divisibleby:8 %}

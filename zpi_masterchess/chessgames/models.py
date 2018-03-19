@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import post_save
-from chesslogic.models import ChessField
+from chesslogic.models import ChessField, ChessPiece, ChessPieceType
 
 class ChessGameManager(models.Manager):
 	def get_queryset(self, *args, **kwargs):
@@ -51,7 +51,6 @@ class ChessGame(models.Model):
 	def initialize_game(self):
 		for row in range(1, 9):
 			for column in range(1, 9):
-				print("tworzę chessfield")
 				ChessField.objects.create(row=row, column=column, chessgame=self)
 		
 	def test_end_conditions(self):
@@ -69,7 +68,6 @@ class ChessGame(models.Model):
 	@staticmethod
 	def post_save(sender, instance, created, **kwargs):
 		if created:
-			instance.save()
 			instance.initialize_game()
 	
 	def __str__(self):
@@ -79,6 +77,7 @@ class ChessGame(models.Model):
 		verbose_name = "gra"
 		verbose_name_plural = "gry"
 
+		
 post_save.connect(ChessGame.post_save, ChessGame)
 
 
@@ -121,10 +120,61 @@ class Side(models.Model):
 		if (sides.count() == 1):
 			return None
 		else:
-			return sides.filter(pk__ne=self.pk)[0]
+			return sides.exclude(pk=self.pk)[0]
+			
+	def initialize_chesspieces(self):
+		KING = ChessPieceType.objects.get(name='Król')
+		QUEEN = ChessPieceType.objects.get(name='Hetman')
+		ROOK = ChessPieceType.objects.get(name='Wieża')
+		BISHOP = ChessPieceType.objects.get(name='Goniec')
+		KNIGHT = ChessPieceType.objects.get(name='Skoczek')
+		PAWN = ChessPieceType.objects.get(name='Pionek')
+		
+		if self.opposite_side() is None:
+			field_id_range = range(1, 17, 1)
+		else:
+			field_id_range = range(64, 17, -1)
+			
+		ChessPiece.objects.create(type=ROOK, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[0]))
+		ChessPiece.objects.create(type=KNIGHT, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[1]))
+		ChessPiece.objects.create(type=BISHOP, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[2]))
+		ChessPiece.objects.create(type=QUEEN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[3]))
+		ChessPiece.objects.create(type=KING, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[4]))
+		ChessPiece.objects.create(type=BISHOP, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[5]))
+		ChessPiece.objects.create(type=KNIGHT, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[6]))
+		ChessPiece.objects.create(type=ROOK, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[7]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[8]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[9]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[10]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[11]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[12]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[13]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[14]))
+		ChessPiece.objects.create(type=PAWN, side=self, 
+			position=ChessField.objects.get_by_id_on_board(chessgame=self.chessgame, id_on_board=field_id_range[15]))
 		
 	def cancel_last_move(self):
 		pass
+		
+	@staticmethod
+	def post_save(sender, instance, created, **kwargs):
+		if created:
+			instance.initialize_chesspieces()
 	
 	def __str__(self):
 		return 'Strona {} w grze nr {}'.format(self.color, self.chessgame.pk)
@@ -136,6 +186,9 @@ class Side(models.Model):
 			('player', 'chessgame'),
 			('color', 'chessgame')
 		)
+
+		
+post_save.connect(Side.post_save, Side)
 
 		
 class DifficultyLevel(models.Model):

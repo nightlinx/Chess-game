@@ -22,10 +22,17 @@ class Player(models.Model):
 		return self.user.email
 		
 	def chessgames(self):
-		pass
+		all_games = []
+		for side in self.side_set.all():
+			all_games.append(side.chessgame)
+		return all_games
 		
 	def current_chessgame(self):
-		pass
+		sides = self.side_set.all().filter(chessgame__is_finished=False).order_by('-time')
+		if sides.count() > 0:
+			return sides.first().chessgame
+		else:
+			return None
 		
 	def __str__(self):
 		return '{} ({})'.format(self.user.username, self.pk)
