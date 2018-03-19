@@ -123,7 +123,8 @@ span.score {
   font-size: 40px;
   padding: 10px;
   font-weight: lighter;
-  font-family: Roboto; }
+  font-family: Roboto;
+  position: relative; }
   span.score:after {
     content: "";
     opacity: 0.0; }
@@ -131,6 +132,9 @@ span.score {
     content: "";
     float: left;
     background: #007791;
+    position: absolute;
+    left: 0%;
+    bottom: 0;
     width: 100%;
     height: 4px;
     border-radius: 3px;
@@ -138,15 +142,16 @@ span.score {
     webkit-transition: opacity 1s;
     /* Safari */
     transition: opacity 1s; }
+  span.score span {
+    font-size: 50%; }
 
 .info-game-wrapper {
   display: grid;
-  grid-gap: 5px;
   grid-template-columns: repeat(2, [col] 50%);
-  grid-template-rows: 40px 80px 30px 100%;
+  grid-template-rows: 40px 100px 30px 100%;
   grid-template-areas: "moveHeader" "player1" "player2" "figureDescription" "figureDescriptionMore"; }
 
-.moveHeader, .figureDescription {
+.moveHeader, .figureDescription, .player1, .player2 {
   text-align: center;
   vertical-align: middle; }
 
@@ -156,17 +161,20 @@ span.score {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row: 1;
-  line-height: 40px; }
+  line-height: 40px;
+  border-bottom: 3px solid #E0E0E0; }
 
 .player1 {
   grid-area: player1;
   grid-column: 1;
-  grid-row: 2; }
+  grid-row: 2;
+  line-height: 40px; }
 
 .player2 {
   grid-area: player2;
   grid-column: 2;
-  grid-row: 2; }
+  grid-row: 2;
+  line-height: 40px; }
 
 .figureDescription {
   grid-area: figureDescription;
@@ -176,7 +184,8 @@ span.score {
   background-color: #EC5252;
   color: #F2F2F2;
   cursor: pointer;
-  line-height: 15px; }
+  line-height: 15px;
+  font-size: 14px; }
 
 .figureDescription:hover {
   background-color: #992337;
@@ -186,7 +195,7 @@ span.score {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row: 4;
-  font-size: 14px;
+  font-size: 12px;
   text-align: left;
   border-bottom: 10px solid #992337;
   border-radius: 5px;

@@ -2,8 +2,8 @@
 
 body {
   margin: 0px;
-	font-family: Roboto;
-  background-color:  #E0E0E0;
+	font-family: $font-family-main;
+  background-color: $body-background-color;
 }
 
 content {
@@ -11,9 +11,9 @@ content {
 }
 
 header {
-  background-color: #007791;
+  background-color: $blue-color-primary;
   padding: 8px;
-  color: #F2F2F2;
+  color: $white-text-color;
   height: 25px;
 }
 header button {
@@ -30,31 +30,31 @@ header button {
 }
 
 footer {
-  background-color: #003845;
+  background-color: $blue-color-secondary;
   padding: 10px;
-  color: #F2F2F2;
+  color: $white-text-color;
   position:fixed;
   bottom:0;
   width: 100%
 }
 
 button {
-	font-family: Roboto;
+	font-family: $font-family-main;
   border: none;
   padding: 8px 35px;
-  border-radius: 3px;
+  border-radius: $border-radius-secondary;
   cursor: pointer;
   display: inline-block;
 }
 
 button.red{
-  background-color: #EC5252;
-  color: #F2F2F2;
+  background-color: $red-color-primary;
+  color: $white-text-color;
 }
 
 button.red:hover{
-  background-color: #992337;
-  color: #F2F2F2;
+  background-color: $red-color-secondary;
+  color: $white-text-color;
 }
 
 button.full {
