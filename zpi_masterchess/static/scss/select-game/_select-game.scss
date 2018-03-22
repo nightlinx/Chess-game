@@ -1,0 +1,81 @@
+@import "../_variables.scss";
+
+
+.wrapper-select-game {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: auto 40% auto;
+  grid-template-areas:
+     "... welcome ..."
+     "... header ..."
+     "... content ..."
+     "... footer ..."
+}
+
+
+
+.box-welcome
+{
+    grid-area: welcome;
+    font-size: $font-size-header;
+    font-weight: normal;
+    margin: 50px;
+}
+
+.box-header
+{
+  border-top-left-radius: $border-radius-main;
+  border-top-right-radius: $border-radius-main;
+  grid-area: header;
+
+  color: $white-text-color;
+  text-align: center;
+  vertical-align: center;
+  line-height: 35px;
+  height: 35px;
+  width: 100%;
+}
+
+.box-header-red{
+  background-color: $red-color-primary;
+}
+
+.box-header-blue{
+  background-color: $blue-color-primary;
+}
+
+.box-content
+{
+  grid-area: content;
+  background-color: $panel-background-color;
+  padding: 30px 0;
+  //padding: 40px;
+}
+
+.button-option
+{
+  border-bottom-left-radius: $border-radius-secondary;
+  border-bottom-right-radius: $border-radius-secondary;
+  font-size: $font-size-main;
+  font-family: $font-family-main;
+  color: $black-text-color;
+  background-color: $body-background-color;
+  text-align: center;
+  vertical-align: center;
+  line-height: 90px;
+  height: 90px;
+  width: 80%;
+  margin: 10px;
+  padding: 0;
+}
+
+.box-footer
+{
+  grid-area: footer;
+  height: 10px;
+  width: 100%;
+  background-color: $red-color-secondary;
+  color: $white-text-color;
+  border-bottom-left-radius: $border-radius-secondary;
+    border-bottom-right-radius: $border-radius-secondary;
+}

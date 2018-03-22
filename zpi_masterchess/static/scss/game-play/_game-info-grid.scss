@@ -1,37 +1,5 @@
 @import "../_variables.scss";
 
-span.score {
-  font-size: 40px;
-  padding: 10px;
-  font-weight: lighter;
-  font-family: $font-family-main;
-  position: relative;
-
-  &:after
-  {
-    content:"";
-    opacity: 0.0;
-  }
-
-  &:hover:after {
-    content:"";
-    float:left;
-    background: $blue-color-primary;
-    position: absolute;
-    left: 0%;
-    bottom: 0;
-    width:100%;
-    height:4px;
-    border-radius: $border-radius-secondary;
-    opacity: 1.0;
-    webkit-transition: opacity 1s; /* Safari */
-    transition: opacity 1s;
-  }
-
-  span {
-    font-size: 50%;
-  }
-}
 
 
 

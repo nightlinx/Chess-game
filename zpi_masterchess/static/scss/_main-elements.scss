@@ -35,6 +35,7 @@ footer {
   color: $white-text-color;
   position:fixed;
   bottom:0;
+  height: 30px;
   width: 100%
 }
 
@@ -59,4 +60,58 @@ button.red:hover{
 
 button.full {
     width:100%;
+}
+
+
+.option-element
+{
+  font-size: 40px;
+  padding: auto;
+  font-weight: lighter;
+  font-family: $font-family-main;
+  position: relative;
+  font-size: $font-size-option;
+&.score
+{
+  padding: 10px;
+}
+
+}
+
+.underline-element
+  {
+    font-size: $font-size-score;
+    position: relative;
+    &:after
+    {
+      content:"";
+      opacity: 0.0;
+    }
+
+    &:hover:after {
+      content:"";
+      //float:left;
+      background: $blue-color-primary;
+      position: absolute;
+      left: 0%;
+      bottom: 0;
+      width:100%;
+      height:4px;
+      border-radius: $border-radius-secondary;
+      opacity: 1.0;
+      webkit-transition: opacity 1s; /* Safari */
+      transition: opacity 1s;
+    }
+
+    &.fixed-width{
+      font-size: $font-size-option;
+      //width:100px;
+    }
+  }
+
+
+
+.big-button{
+  padding: 10px;
+  width: 150px;
 }

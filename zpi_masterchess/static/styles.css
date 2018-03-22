@@ -29,6 +29,7 @@ footer {
   color: #F2F2F2;
   position: fixed;
   bottom: 0;
+  height: 30px;
   width: 100%; }
 
 button {
@@ -49,6 +50,42 @@ button.red:hover {
 
 button.full {
   width: 100%; }
+
+.option-element {
+  font-size: 40px;
+  padding: auto;
+  font-weight: lighter;
+  font-family: Roboto;
+  position: relative;
+  font-size: 18px; }
+  .option-element.score {
+    padding: 10px; }
+
+.underline-element {
+  font-size: 24px;
+  position: relative; }
+  .underline-element:after {
+    content: "";
+    opacity: 0.0; }
+  .underline-element:hover:after {
+    content: "";
+    background: #007791;
+    position: absolute;
+    left: 0%;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 3px;
+    opacity: 1.0;
+    webkit-transition: opacity 1s;
+    /* Safari */
+    transition: opacity 1s; }
+  .underline-element.fixed-width {
+    font-size: 18px; }
+
+.big-button {
+  padding: 10px;
+  width: 150px; }
 
 div.field {
   width: 50px;
@@ -119,32 +156,6 @@ div.greenBorder {
   border-bottom: 10px solid #003845;
   border-radius: 5px; }
 
-span.score {
-  font-size: 40px;
-  padding: 10px;
-  font-weight: lighter;
-  font-family: Roboto;
-  position: relative; }
-  span.score:after {
-    content: "";
-    opacity: 0.0; }
-  span.score:hover:after {
-    content: "";
-    float: left;
-    background: #007791;
-    position: absolute;
-    left: 0%;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    border-radius: 3px;
-    opacity: 1.0;
-    webkit-transition: opacity 1s;
-    /* Safari */
-    transition: opacity 1s; }
-  span.score span {
-    font-size: 50%; }
-
 .info-game-wrapper {
   display: grid;
   grid-template-columns: repeat(2, [col] 50%);
@@ -201,5 +212,168 @@ span.score {
   border-radius: 5px;
   max-height: 185px;
   overflow-y: scroll; }
+
+.wrapper-select-game {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: auto 40% auto;
+  grid-template-areas: "... welcome ..." "... header ..." "... content ..." "... footer ..."; }
+
+.box-welcome {
+  grid-area: welcome;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 50px; }
+
+.box-header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  grid-area: header;
+  color: #F2F2F2;
+  text-align: center;
+  vertical-align: center;
+  line-height: 35px;
+  height: 35px;
+  width: 100%; }
+
+.box-header-red {
+  background-color: #EC5252; }
+
+.box-header-blue {
+  background-color: #007791; }
+
+.box-content {
+  grid-area: content;
+  background-color: #F7F7F7;
+  padding: 30px 0; }
+
+.button-option {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-size: 14px;
+  font-family: Roboto;
+  color: #444;
+  background-color: #E0E0E0;
+  text-align: center;
+  vertical-align: center;
+  line-height: 90px;
+  height: 90px;
+  width: 80%;
+  margin: 10px;
+  padding: 0; }
+
+.box-footer {
+  grid-area: footer;
+  height: 10px;
+  width: 100%;
+  background-color: #992337;
+  color: #F2F2F2;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px; }
+
+.wrapper-select-game-params {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: auto 120px 120px auto;
+  grid-template-rows: 30px 60px 30px 60px 30px 60px auto;
+  grid-template-areas: "chessColorHeader" "chessColorWhite" "chessColorBlack" "setTimeHeader" "setTimeYes" "setTimeNo" "chooseDifficultyHeader" "chooseDifficultyOption" "startGame"; }
+
+.box-wrapper {
+  padding: 10px; }
+
+.header {
+  vertical-align: bottom;
+  line-height: 30px;
+  font-weight: bold; }
+  .header.box-chess-color-header {
+    grid-area: chessColorHeader;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 1; }
+  .header.set-time-header {
+    grid-area: setTimeHeader;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 3; }
+  .header.choose-difficulty-header {
+    grid-area: chooseDifficultyHeader;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 5; }
+  .header.box-awaiting-games {
+    grid-area: setTimeHeader;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 7;
+    overflow-y: scroll; }
+    .header.box-awaiting-games .option {
+      font-weight: lighter;
+      padding: 5px;
+      margin: 0; }
+    .header.box-awaiting-games .active {
+      font-weight: bold;
+      color: #EC5252; }
+
+.option {
+  margin: 10px;
+  vertical-align: middle;
+  line-height: 40px;
+  position: relative; }
+  .option.left {
+    float: right;
+    text-align: center; }
+    .option.left.chess-color-white {
+      grid-area: chessColorWhite;
+      grid-column: 2;
+      grid-row: 2; }
+    .option.left.set-time-yes {
+      grid-area: setTimeYes;
+      grid-column: 2;
+      grid-row: 4; }
+  .option.right {
+    float: left;
+    text-align: center; }
+    .option.right.chess-color-black {
+      grid-area: chessColorBlack;
+      grid-column: 3;
+      grid-row: 2; }
+    .option.right.set-time-no {
+      grid-area: setTimeNo;
+      grid-column: 3;
+      grid-row: 4; }
+  .option.choose-difficulty-option {
+    grid-area: chooseDifficultyOption;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 6;
+    width: 130px;
+    margin: auto; }
+    .option.choose-difficulty-option:after {
+      content: "";
+      background: #007791;
+      position: absolute;
+      left: 0%;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 3px;
+      opacity: 1.0; }
+
+.start-game {
+  grid-area: startGame;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 7; }
+
+.difficulty-selector {
+  border-radius: 5px;
+  border: 0px;
+  width: 86px;
+  font-family: Roboto;
+  background-color: transparent;
+  padding: 10px; }
+  .difficulty-selector option {
+    text-align-last: center; }
 
 /*# sourceMappingURL=styles.css.map */

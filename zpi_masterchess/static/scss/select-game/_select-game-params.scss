@@ -1,0 +1,167 @@
+@import "../_variables.scss";
+$option-line-height: 60px;
+$header-line-height: 30px;
+$option-column-width: 120px;
+$margin-value: 10px;
+
+.wrapper-select-game-params {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: auto $option-column-width $option-column-width auto;
+  grid-template-rows: $header-line-height $option-line-height
+                      $header-line-height $option-line-height
+                      $header-line-height $option-line-height auto;
+  grid-template-areas:
+      "chessColorHeader"
+      "chessColorWhite" "chessColorBlack"
+      "setTimeHeader"
+      "setTimeYes" "setTimeNo"
+      "chooseDifficultyHeader"
+      "chooseDifficultyOption"
+      "startGame"
+}
+
+.box-wrapper
+{
+  padding: 10px;
+}
+
+.header
+{
+  vertical-align: bottom;
+  line-height: $header-line-height;
+  font-weight: bold;
+
+  &.box-chess-color-header
+  {
+      grid-area: chessColorHeader;
+      grid-column-start: 2;
+      grid-column-end: 4;
+      grid-row: 1;
+  }
+
+  &.set-time-header
+  {
+      grid-area: setTimeHeader;
+      grid-column-start: 2;
+      grid-column-end: 4;
+      grid-row: 3;
+  }
+
+  &.choose-difficulty-header
+  {
+      grid-area: chooseDifficultyHeader;
+      grid-column-start: 2;
+      grid-column-end: 4;
+      grid-row: 5;
+  }
+
+  &.box-awaiting-games{
+    grid-area: setTimeHeader;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 7;
+    overflow-y: scroll;
+
+    .option{
+      font-weight: lighter;
+      padding: 5px;
+      margin: 0;
+    }
+    .active{
+      font-weight: bold;
+      color: $red-color-primary;
+    }
+  }
+}
+
+.option
+{
+  margin: 10px;
+  vertical-align: middle;
+  line-height: $option-line-height - 2 * $margin-value;
+  position: relative;
+  &.left
+  {
+    float: right;
+    text-align: center;
+    &.chess-color-white
+    {
+        grid-area: chessColorWhite;
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    &.set-time-yes
+    {
+        grid-area: setTimeYes;
+        grid-column: 2;
+        grid-row: 4;
+    }
+  }
+
+  &.right
+  {
+    float: left;
+    text-align: center;
+    &.chess-color-black
+    {
+        grid-area: chessColorBlack;
+        grid-column: 3;
+        grid-row: 2;
+    }
+    &.set-time-no
+    {
+        grid-area: setTimeNo;
+        grid-column: 3;
+        grid-row: 4;
+    }
+  }
+
+  &.choose-difficulty-option
+  {
+      grid-area: chooseDifficultyOption;
+      grid-column-start: 2;
+      grid-column-end: 4;
+      grid-row: 6;
+      width:130px;
+      margin: auto;
+      &:after {
+        content:"";
+        //float:left;
+        background: $blue-color-primary;
+        position: absolute;
+        left: 0%;
+        bottom: 0;
+        width:100%;
+        height:4px;
+        border-radius: $border-radius-secondary;
+        opacity: 1.0;
+      }
+  }
+
+}
+.start-game
+{
+    grid-area: startGame;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 7;
+}
+
+.difficulty-selector
+{
+  border-radius: $border-radius-main;
+  border: 0px;
+  width: 86px;
+
+  font-family: $font-family-main;
+  background-color: transparent;
+  padding: 10px;
+  option{
+      text-align-last:center;
+  }
+
+
+}
