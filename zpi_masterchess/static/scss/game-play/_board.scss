@@ -1,0 +1,21 @@
+@import "../_variables.scss";
+
+div.field {
+  width: 50px;
+  height: 50px;
+  float: left;
+  display: inline;
+  box-sizing: border-box;
+}
+
+div.white{
+  background-color: $white-field-color;
+}
+
+div.black{
+  background-color: $black-field-color;
+}
+
+div.greenBorder {
+  border: 4px solid green;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE  html>
+<html lang='pl'>
+<head>
+	<meta charset='utf-8'>
+	<title>MasterChess</title>
+	<link href='../static/styles.css' rel='stylesheet'/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>-->
+</head>
+<body >
+  <header>
+    <p id="logo">Master<span style="font-weight: bold;">Chess</span></p>
+    <button class="red">Wyloguj</button>
+  </header>
+
+<div id="content">
+	<footer>
+		<button class="red" v-if="!showSelectAction" v-on:click="showSelectAction = true; showAwaitingGames = false; showParams = false; showCancelButton = false;">Wróć</button>
+	</footer>
+
+		<div class="wrapper wrapper-select-game">
+				<template v-if="showSelectAction">
+				  <h1 class="box-welcome">Witamy w MaterChess, aplikacja do nauki gry w szachy</h1>
+				  <div class="box-header box-header-red">Co chcesz zrobić?</div>
+				  <div class="box box-content">
+				    <button class="button-option" v-on:click="showCancelButton = true; showAwaitingGames = true; showSelectAction = false;">Dołącz do istniejącej rozgrywki</button>
+				    <button class="button-option" v-on:click="showCancelButton = true; showParams = true; showSelectAction = false; ">Stwórz swoją!</button>
+				  </div>
+				  <div class="box-footer"></div>
+				</template>
+
+
+				<template v-if="showParams">
+					<h1 class="box-welcome"></h1>
+				  <div class="box-header box-header-blue">Wybierz parametry rozgrywki</div>
+				  <div class="box box-content wrapper-select-game-params">
+
+						<div class="box-chess-color-header header">Kolor pionków</div>
+						<div class="option chess-color-white left underline-element"><span class="option-element">Biały</span></div>
+						<div class="option chess-color-black right underline-element"><span class="option-element">Czarny</span></div>
+
+						<div class="set-time-header header">Czas na jeden ruch?</div>
+						<div class="option set-time-yes left underline-element"><span class="option-element">Tak</span></div>
+						<div class="option set-time-no right underline-element"><span class="option-element">Nie</span></div>
+
+						<div class="choose-difficulty-header header">Poziom trudności</div>
+						<div class="choose-difficulty-option option">
+							<select class="difficulty-selector">
+									<option value="easy">Łatwy</option>
+									<option value="intermediate">Średni</option>
+									<option value="difficult">Trudny</option>
+							</select>
+						</div>
+						<div class="start-game">
+									<button class="big-button red">Stwórz grę!</button>
+									</div>
+						</div>
+							<div class="box-footer"></div>
+				  </div>
+				</template>
+
+				<template v-if="showAwaitingGames">
+								<h1 class="box-welcome"></h1>
+							<div class="box-header box-header-blue">Dołącz do rozgrywki</div>
+
+							<div class="box box-content wrapper-select-game-params">
+
+								<div class="box-chess-color-header header">Rozgrywki założone przez</div>
+								<div class="box-awaiting-games header">
+
+									<div class='option active'>	Gracz_2 </div>
+									<template v-for="p in players">
+										<div class='option'>	{{p.name}} </div>
+									</template>
+
+								</div>
+
+								<div class="start-game">
+											<button class="big-button red">Graj!</button>
+											</div>
+								</div>
+						</template>
+
+						<div class="box-footer"></div>
+				</div>
+
+		</div>
+
+</div>
+<script>
+	new Vue({
+		el: '#content',
+		data: {
+			players:
+			[
+				{name: "Kasia56" },
+				{name:"Graczyk" },
+				{name:"Ziomeczek" },
+				{name:"Grobel43" },
+				{name:"Michaś" }
+			],
+			showSelectAction: true,
+			showParams: false,
+			showAwaitingGames: false,
+			showCancelButton: true,
+		},
+});
+</script>
+</body>
+</html>

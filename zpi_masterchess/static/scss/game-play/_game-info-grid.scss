@@ -1,0 +1,79 @@
+@import "../_variables.scss";
+
+
+
+
+
+.info-game-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, [col] 50% ) ;
+  grid-template-rows: 40px 100px 30px 100%;
+  grid-template-areas:
+     "moveHeader"
+     "player1"
+     "player2"
+     "figureDescription"
+     "figureDescriptionMore"
+}
+
+.moveHeader, .figureDescription, .player1 , .player2{
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.moveHeader {
+  padding: auto;
+  grid-area: moveHeader;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 1;
+  line-height: 40px;
+  border-bottom: 3px solid $body-background-color;
+}
+
+
+
+.player1 {
+  grid-area: player1;
+  grid-column: 1;
+  grid-row: 2;
+  line-height: 40px;
+
+}
+
+.player2 {
+  grid-area: player2;
+  grid-column: 2;
+  grid-row: 2;
+  line-height: 40px;
+}
+
+.figureDescription{
+  grid-area: figureDescription;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 3;
+  background-color: $red-color-primary;
+  color: $white-text-color;
+  cursor: pointer;
+  line-height: 15px;
+  font-size: $font-size-main;
+}
+
+.figureDescription:hover{
+  background-color: $red-color-secondary;
+  color: $white-text-color;
+}
+
+.figureDescriptionMore{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 4;
+  font-size: $font-size-secondary;
+  text-align: left;
+  border-bottom: 10px solid $red-color-secondary;
+  border-radius: $border-radius-main;
+  max-height: 185px;
+  overflow-y: scroll;
+}

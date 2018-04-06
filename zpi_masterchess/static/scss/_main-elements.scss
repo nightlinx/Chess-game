@@ -1,0 +1,117 @@
+@import "_variables.scss";
+
+body {
+  margin: 0px;
+	font-family: $font-family-main;
+  background-color: $body-background-color;
+}
+
+content {
+  margin: 0px 30px;
+}
+
+header {
+  background-color: $blue-color-primary;
+  padding: 8px;
+  color: $white-text-color;
+  height: 25px;
+}
+header button {
+  float: right;
+  padding: 5px 10px;
+  font-size: 80%;
+  margin-right: 10px;
+  width: 100px;
+}
+
+#logo {
+  display: inline-block;
+  margin: 2px 10px;
+}
+
+footer {
+  background-color: $blue-color-secondary;
+  padding: 10px;
+  color: $white-text-color;
+  position:fixed;
+  bottom:0;
+  height: 30px;
+  width: 100%
+}
+
+button {
+	font-family: $font-family-main;
+  border: none;
+  padding: 8px 35px;
+  border-radius: $border-radius-secondary;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button.red{
+  background-color: $red-color-primary;
+  color: $white-text-color;
+}
+
+button.red:hover{
+  background-color: $red-color-secondary;
+  color: $white-text-color;
+}
+
+button.full {
+    width:100%;
+}
+
+
+.option-element
+{
+  font-size: 40px;
+  padding: auto;
+  font-weight: lighter;
+  font-family: $font-family-main;
+  position: relative;
+  font-size: $font-size-option;
+&.score
+{
+  padding: 10px;
+}
+
+}
+
+.underline-element
+  {
+    font-size: $font-size-score;
+    position: relative;
+    &:after
+    {
+      content:"";
+      opacity: 0.0;
+    }
+
+    &:hover:after {
+      content:"";
+      //float:left;
+      background: $blue-color-primary;
+      position: absolute;
+      left: 0%;
+      bottom: 0;
+      width:100%;
+      height:4px;
+      border-radius: $border-radius-secondary;
+      opacity: 1.0;
+      webkit-transition: opacity 1s; /* Safari */
+      transition: opacity 1s;
+    }
+
+    &.fixed-width{
+      font-size: $font-size-option;
+      //width:100px;
+    }
+  }
+
+
+
+.big-button{
+  padding: 10px;
+  width: 150px;
+}
