@@ -10,10 +10,10 @@
 	<tr>
 	{% for chessfield in chessgame.chessfield_set.all %}
 		<td style="width: 64px; height: 64px; font-size: 10px;">
-			{{ chessfield.id_on_board }}<br />
-			row:{{ chessfield.row }} col:{{ chessfield.column }}<br />
+			{{ chessfield.name|upper }} ({{ chessfield.field_id }})<br />
+			file:{{ chessfield.file }} rank:{{ chessfield.rank }}<br />
 			{% if chessfield.chesspiece %}
-				<strong style="font-size: 13px;">{{ chessfield.chesspiece.type.name }}</strong><br />
+				<strong style="font-size: 13px;" title="{% for move in chessfield.chesspiece.legal_moves %}{{move}}{% if not forloop.last %}, {% endif %}{% empty %}Brak{% endfor %}">{{ chessfield.chesspiece.type.name }}</strong><br />
 				<strong style="font-size: 12px;">{{ chessfield.chesspiece.side.get_color_display }}</strong> ({{ chessfield.chesspiece.side.player.username }})
 			{% endif %}
 		</td>
@@ -26,30 +26,50 @@
 	</tr>
 	</table>
 
-	{% for side in chessgame.side_set.all %}
-	<h3>{{side.get_color_display}} ({{side.player.username}}) - punktów: {{side.points}}</h3>
+	<h2>Strony</h2>
 	<table class="table">
 		<tr>
-			<th>id</th>
-			<th>time</th>
-			<th>destination</th>
-			<th>moved_piece</th>
-			<th>captured_piece</th>
+			<th>ID</th>
+			<th>Imię</th>
+			<th>Kolor</th>
+			<th>Punkty</th>
+			<th>Ruch<th>
 		</tr>
-		{% for move in side.moves %}
+		{% for side in chessgame.side_set.all %}
+		<tr>
+			<td>{{ side.pk }}</td>
+			<td>{{ side.player.username }}</td>
+			<td>{{ side.get_color_display }}</td>
+			<td>{{ side.points }}</td>
+			<td>{% if side == chessgame.turn %}x{% endif %}</td>
+		</tr>
+		{% empty %}
+			<tr><td>Brak stron</td></tr>
+		{% endfor %}
+	</table>
+	
+	<h2>Ruchy</h2>
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>Strona</th>
+			<th>Z</th>
+			<th>Na</th>
+			<th>Promocja</th>
+			<th>Czas</th>
+		</tr>
+		{% for move in chessgame.moves %}
 		<tr>
 			<td>{{ move.id }}</td>
+			<td>{{ move.side.get_color_display }}</strong> ({{ move.side.player.username }})</td>
+			<td>{{ move.from_field.name }}</td>
+			<td>{{ move.to_field.name }}</td>
+			<td>{{ move.promotion_type }}</td>
 			<td>{{ move.time }}</td>
-			<td>{{ move.destination }}</td>
-			<td>{{ move.moved_piece }}</td>
-			<td>{{ move.captured_piece }}</td>
 		</tr>
 		{% empty %}
 			<tr><td>Brak ruchów</td></tr>
 		{% endfor %}
 	</table>
-	{% empty %}
-	<p>Brak stron</p>
-	{% endfor %}
 	</div>
 </body>
