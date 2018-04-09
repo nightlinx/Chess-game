@@ -1,3 +1,0 @@
-Django==2.0.2
-python-chess==0.22.2
-pytz==2018.3
