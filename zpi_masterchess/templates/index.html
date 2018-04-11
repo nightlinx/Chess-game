@@ -17,9 +17,9 @@
   </header>
   <div class="wrapper">
     <div class="box menu"></div>
-    <div class="box chess" v-on:click='updateCoordinates'>
+    <div class="box chess" v-on:click='selectField'>
 			<template v-for="(field, index) in board">
-					<span :id="index" v-html="field.htmlElem"></span>
+					<span :id="index" v-bind:class="[field.figure, isWhite(index), {isSelected: selectedField==field}]" class="field"></span>
 			</template>
 		</div>
     <div class="box infoGame info-game-wrapper">
@@ -55,36 +55,27 @@
 				board: [],
 				x: 0,
 				y: 0,
+				selectedField: null,
       },
 			methods: {
+				isWhite(i) {
+					c = i % 8;
+					r = Math.floor(i/8);
+					return ((c+r)%2)==0 ? 'white' : 'black';
+				},
 				fillBoard() {
-					var fieldCol = 'white';
-					for(var r=0; r < 8; r++){
-						for(var c=0; c < 8; c++){
-							if(((c+r)%2)==0) {
-								fieldCol = 'black';
-							}
-							else {
-								fieldCol = 'white';
-							}
-							var html = "<div class='field " + fieldCol + "'></div>";
-							this.board.push({ free: true, color: fieldCol, htmlElem: html, isSelected: false});
-						}
+					for(var r=0; r < 64; r++){
+						let fieldCol = this.isWhite(r);
+						this.board.push({free: true, color: fieldCol, isSelected: false, figure: 'king'});
 					}
 				},
-				updateCoordinates: function(ev) {
-					this.x = ev.clientX;
-					this.y = ev.clientY;
-				},
-				selectField() {
-					var field = this.board[40];
-					field.isSelected = true;
-					field.htmlElem = "<div class='field " + field.color + " greenBorder'></div>";
-					}
+				selectField(ev) {
+					this.selectedField = this.board[parseInt(ev.target.id)];
+					this.selectedField.figure = "pawn";
+				}
 			},
 			beforeMount(){
 	 			this.fillBoard();
-				this.selectField();
 			},
     });
   </script>

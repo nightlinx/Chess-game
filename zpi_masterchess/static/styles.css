@@ -87,21 +87,30 @@ button.full {
   padding: 10px;
   width: 150px; }
 
-div.field {
+.field {
   width: 50px;
   height: 50px;
   float: left;
   display: inline;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-size: 45px;
+  background-position: center;
+  background-repeat: no-repeat; }
 
-div.white {
+.field.white {
   background-color: white; }
 
-div.black {
+.field.black {
   background-color: #444; }
 
-div.greenBorder {
+.field.isSelected {
   border: 4px solid green; }
+
+.king {
+  background-image: url("img/chessman/1.png"); }
+
+.pawn {
+  background-image: url("img/chessman/6.png"); }
 
 .wrapper {
   text-align: center;
