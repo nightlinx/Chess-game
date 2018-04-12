@@ -19,11 +19,11 @@
   background-color: $black-field-color;
 }
 
-.field.isSelected {
+.field.isMove {
   background-color: green;
 }
 
-.field.move {
+.field.isSelected {
   border: 4px solid green;
 }
 

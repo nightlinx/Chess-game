@@ -19,7 +19,10 @@
     <div class="box menu"></div>
     <div class="box chess" v-on:click='selectField'>
 			<template v-for="(field, index) in board">
-					<span :id="index" v-bind:class="[field.figure, isWhite(index), {isSelected: selectedField==field}]" class="field"></span>
+					<span :id="index" v-bind:class=
+					"[field.figure, isWhite(index),
+					 {isSelected: selectedFigure==field},
+					 {isMove: field.possibleMove==true}]" class="field"></span>
 			</template>
 		</div>
     <div class="box infoGame info-game-wrapper">
@@ -55,8 +58,8 @@
 				board: [],
 				x: 0,
 				y: 0,
-				selectedField: null,
-
+				selectedFigure: null,
+				allMoves: []
       },
 			methods: {
 				isWhite(i) {
@@ -67,7 +70,7 @@
 				fillBoard() {
 					for(var r=0; r < 64; r++){
 						let fieldCol = this.isWhite(r);
-						this.board.push({free: true, isSelected: false, figure: ''});
+						this.board.push({isSelected: false, figure: '', possibleMove: false});
 					}
 						this.board[0].figure = "f5";
 						this.board[1].figure = "f4";
@@ -89,11 +92,17 @@
 						this.board[58].figure = "f9";
 						this.board[57].figure = "f10";
 						this.board[56].figure = "f11";
-
+						this.moves();
 				},
 				selectField(ev) {
-					this.selectedField = this.board[parseInt(ev.target.id)];
-					//this.selectedField.figure = "f2";
+					this.selectedFigure = this.board[parseInt(ev.target.id)];
+				},
+				moves() {
+					this.allMoves = [24, 35, 37];
+					for (var i=0; i<this.allMoves.length; i++) {
+						console.log(this.allMoves[i]);
+						this.board[this.allMoves[i]].possibleMove = true;
+					}
 				}
 			},
 			beforeMount(){
