@@ -56,6 +56,7 @@
 				x: 0,
 				y: 0,
 				selectedField: null,
+
       },
 			methods: {
 				isWhite(i) {
@@ -66,12 +67,33 @@
 				fillBoard() {
 					for(var r=0; r < 64; r++){
 						let fieldCol = this.isWhite(r);
-						this.board.push({free: true, color: fieldCol, isSelected: false, figure: 'king'});
+						this.board.push({free: true, isSelected: false, figure: ''});
 					}
+						this.board[0].figure = "f5";
+						this.board[1].figure = "f4";
+						this.board[2].figure = "f3";
+						this.board[3].figure = "f2";
+						this.board[4].figure = "f1";
+						this.board[5].figure = "f3";
+						this.board[6].figure = "f4";
+						this.board[7].figure = "f5";
+						for (var i=8; i<=15; i++){
+							this.board[i].figure = "f6";
+							this.board[63-i].figure = "f12";
+						}
+						this.board[63].figure = "f11";
+						this.board[62].figure = "f10";
+						this.board[61].figure = "f9";
+						this.board[60].figure = "f8";
+						this.board[59].figure = "f7";
+						this.board[58].figure = "f9";
+						this.board[57].figure = "f10";
+						this.board[56].figure = "f11";
+
 				},
 				selectField(ev) {
 					this.selectedField = this.board[parseInt(ev.target.id)];
-					this.selectedField.figure = "pawn";
+					//this.selectedField.figure = "f2";
 				}
 			},
 			beforeMount(){

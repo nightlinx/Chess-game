@@ -1,27 +1,32 @@
 body {
   margin: 0px;
   font-family: Roboto;
-  background-color: #E0E0E0; }
+  background-color: #E0E0E0;
+}
 
 content {
-  margin: 0px 30px; }
+  margin: 0px 30px;
+}
 
 header {
   background-color: #007791;
   padding: 8px;
   color: #F2F2F2;
-  height: 25px; }
+  height: 25px;
+}
 
 header button {
   float: right;
   padding: 5px 10px;
   font-size: 80%;
   margin-right: 10px;
-  width: 100px; }
+  width: 100px;
+}
 
 #logo {
   display: inline-block;
-  margin: 2px 10px; }
+  margin: 2px 10px;
+}
 
 footer {
   background-color: #003845;
@@ -30,7 +35,8 @@ footer {
   position: fixed;
   bottom: 0;
   height: 30px;
-  width: 100%; }
+  width: 100%;
+}
 
 button {
   font-family: Roboto;
@@ -38,18 +44,22 @@ button {
   padding: 8px 35px;
   border-radius: 3px;
   cursor: pointer;
-  display: inline-block; }
+  display: inline-block;
+}
 
 button.red {
   background-color: #EC5252;
-  color: #F2F2F2; }
+  color: #F2F2F2;
+}
 
 button.red:hover {
   background-color: #992337;
-  color: #F2F2F2; }
+  color: #F2F2F2;
+}
 
 button.full {
-  width: 100%; }
+  width: 100%;
+}
 
 .option-element {
   font-size: 40px;
@@ -57,35 +67,42 @@ button.full {
   font-weight: lighter;
   font-family: Roboto;
   position: relative;
-  font-size: 18px; }
-  .option-element.score {
-    padding: 10px; }
+  font-size: 18px;
+}
+.option-element.score {
+  padding: 10px;
+}
 
 .underline-element {
   font-size: 24px;
-  position: relative; }
-  .underline-element:after {
-    content: "";
-    opacity: 0.0; }
-  .underline-element:hover:after {
-    content: "";
-    background: #007791;
-    position: absolute;
-    left: 0%;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    border-radius: 3px;
-    opacity: 1.0;
-    webkit-transition: opacity 1s;
-    /* Safari */
-    transition: opacity 1s; }
-  .underline-element.fixed-width {
-    font-size: 18px; }
+  position: relative;
+}
+.underline-element:after {
+  content: "";
+  opacity: 0;
+}
+.underline-element:hover:after {
+  content: "";
+  background: #007791;
+  position: absolute;
+  left: 0%;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 3px;
+  opacity: 1;
+  webkit-transition: opacity 1s;
+  /* Safari */
+  transition: opacity 1s;
+}
+.underline-element.fixed-width {
+  font-size: 18px;
+}
 
 .big-button {
   padding: 10px;
-  width: 150px; }
+  width: 150px;
+}
 
 .field {
   width: 50px;
@@ -95,85 +112,146 @@ button.full {
   box-sizing: border-box;
   background-size: 45px;
   background-position: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+}
 
 .field.white {
-  background-color: white; }
+  background-color: white;
+}
 
 .field.black {
-  background-color: #444; }
+  background-color: #444;
+}
 
 .field.isSelected {
-  border: 4px solid green; }
+  border: 4px solid green;
+  background-color: green;
+}
 
-.king {
-  background-image: url("img/chessman/1.png"); }
+.field.f1 {
+  background-image: url("img/chessman/1.png");
+}
 
-.pawn {
-  background-image: url("img/chessman/6.png"); }
+.field.f2 {
+  background-image: url("img/chessman/2.png");
+}
+
+.field.f3 {
+  background-image: url("img/chessman/3.png");
+}
+
+.field.f4 {
+  background-image: url("img/chessman/4.png");
+}
+
+.field.f5 {
+  background-image: url("img/chessman/5.png");
+}
+
+.field.f6 {
+  background-image: url("img/chessman/6.png");
+}
+
+.field.f7 {
+  background-image: url("img/chessman/7.png");
+}
+
+.field.f8 {
+  background-image: url("img/chessman/8.png");
+}
+
+.field.f9 {
+  background-image: url("img/chessman/9.png");
+}
+
+.field.f10 {
+  background-image: url("img/chessman/10.png");
+}
+
+.field.f11 {
+  background-image: url("img/chessman/11.png");
+}
+
+.field.f12 {
+  background-image: url("img/chessman/12.png");
+}
 
 .wrapper {
   text-align: center;
   background-color: #E0E0E0;
   color: #444;
-  margin: 5px 0; }
+  margin: 5px 0;
+}
 
 .wrapper {
   display: grid;
   grid-gap: 5px;
-  grid-template-areas: "menu" "chess" "infoGame" "howToPlay" "moreInfo"; }
+  grid-template-areas: "menu" "chess" "infoGame" "howToPlay" "moreInfo";
+}
 
 @media only screen and (min-width: 650px) {
   .wrapper {
     grid-gap: 5px;
     grid-template-columns: auto 200px 200px 200px auto;
-    grid-template-areas: "... menu menu menu ..." "... chess chess infoGame ..." "... howToPlay howToPlay howToPlay ..." "... moreInfo moreInfo moreInfo ..."; } }
+    grid-template-areas: "... menu menu menu ..." "... chess chess infoGame ..." "... howToPlay howToPlay howToPlay ..." "... moreInfo moreInfo moreInfo ...";
+  }
+}
 .box {
-  padding: 8px; }
+  padding: 8px;
+}
 
 .infoGame, .howToPlay, .figureDescription {
-  border-radius: 5px; }
+  border-radius: 5px;
+}
 
 .menu {
   grid-area: menu;
   background-color: #E0E0E0;
-  color: black; }
+  color: black;
+}
 
 .chess {
   grid-area: chess;
   height: 400px;
   width: 400px;
-  padding: 0px; }
+  padding: 0px;
+}
 
 .infoGame {
   grid-area: infoGame;
-  background-color: #F7F7F7; }
+  background-color: #F7F7F7;
+}
 
 .howToPlay {
   grid-area: howToPlay;
   background-color: #007791;
   color: #F2F2F2;
   text-align: left;
-  cursor: pointer; }
-  .howToPlay:hover {
-    background-color: #003845; }
+  cursor: pointer;
+}
+.howToPlay:hover {
+  background-color: #003845;
+}
 
 .moreInfo {
   grid-area: moreInfo;
   font-size: 14px;
   text-align: left;
   border-bottom: 10px solid #003845;
-  border-radius: 5px; }
+  border-radius: 5px;
+}
 
 .info-game-wrapper {
   display: grid;
   grid-template-columns: repeat(2, [col] 50%);
   grid-template-rows: 40px 100px 30px 100%;
-  grid-template-areas: "moveHeader" "player1" "player2" "figureDescription" "figureDescriptionMore"; }
+  grid-template-areas: "moveHeader" "player1" "player2" "figureDescription" "figureDescriptionMore";
+}
 
 .moveHeader, .figureDescription, .player1, .player2 {
   text-align: center;
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 .moveHeader {
   padding: auto;
@@ -182,19 +260,22 @@ button.full {
   grid-column-end: 3;
   grid-row: 1;
   line-height: 40px;
-  border-bottom: 3px solid #E0E0E0; }
+  border-bottom: 3px solid #E0E0E0;
+}
 
 .player1 {
   grid-area: player1;
   grid-column: 1;
   grid-row: 2;
-  line-height: 40px; }
+  line-height: 40px;
+}
 
 .player2 {
   grid-area: player2;
   grid-column: 2;
   grid-row: 2;
-  line-height: 40px; }
+  line-height: 40px;
+}
 
 .figureDescription {
   grid-area: figureDescription;
@@ -205,11 +286,13 @@ button.full {
   color: #F2F2F2;
   cursor: pointer;
   line-height: 15px;
-  font-size: 14px; }
+  font-size: 14px;
+}
 
 .figureDescription:hover {
   background-color: #992337;
-  color: #F2F2F2; }
+  color: #F2F2F2;
+}
 
 .figureDescriptionMore {
   grid-column-start: 1;
@@ -220,19 +303,22 @@ button.full {
   border-bottom: 10px solid #992337;
   border-radius: 5px;
   max-height: 185px;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+}
 
 .wrapper-select-game {
   display: grid;
   grid-gap: 0px;
   grid-template-columns: auto 40% auto;
-  grid-template-areas: "... welcome ..." "... header ..." "... content ..." "... footer ..."; }
+  grid-template-areas: "... welcome ..." "... header ..." "... content ..." "... footer ...";
+}
 
 .box-welcome {
   grid-area: welcome;
   font-size: 16px;
   font-weight: normal;
-  margin: 50px; }
+  margin: 50px;
+}
 
 .box-header {
   border-top-left-radius: 5px;
@@ -243,18 +329,22 @@ button.full {
   vertical-align: center;
   line-height: 35px;
   height: 35px;
-  width: 100%; }
+  width: 100%;
+}
 
 .box-header-red {
-  background-color: #EC5252; }
+  background-color: #EC5252;
+}
 
 .box-header-blue {
-  background-color: #007791; }
+  background-color: #007791;
+}
 
 .box-content {
   grid-area: content;
   background-color: #F7F7F7;
-  padding: 30px 0; }
+  padding: 30px 0;
+}
 
 .button-option {
   border-bottom-left-radius: 3px;
@@ -269,7 +359,8 @@ button.full {
   height: 90px;
   width: 80%;
   margin: 10px;
-  padding: 0; }
+  padding: 0;
+}
 
 .box-footer {
   grid-area: footer;
@@ -278,102 +369,122 @@ button.full {
   background-color: #992337;
   color: #F2F2F2;
   border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px; }
+  border-bottom-right-radius: 3px;
+}
 
 .wrapper-select-game-params {
   display: grid;
   grid-gap: 0px;
   grid-template-columns: auto 120px 120px auto;
   grid-template-rows: 30px 60px 30px 60px 30px 60px auto;
-  grid-template-areas: "chessColorHeader" "chessColorWhite" "chessColorBlack" "setTimeHeader" "setTimeYes" "setTimeNo" "chooseDifficultyHeader" "chooseDifficultyOption" "startGame"; }
+  grid-template-areas: "chessColorHeader" "chessColorWhite" "chessColorBlack" "setTimeHeader" "setTimeYes" "setTimeNo" "chooseDifficultyHeader" "chooseDifficultyOption" "startGame";
+}
 
 .box-wrapper {
-  padding: 10px; }
+  padding: 10px;
+}
 
 .header {
   vertical-align: bottom;
   line-height: 30px;
-  font-weight: bold; }
-  .header.box-chess-color-header {
-    grid-area: chessColorHeader;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row: 1; }
-  .header.set-time-header {
-    grid-area: setTimeHeader;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row: 3; }
-  .header.choose-difficulty-header {
-    grid-area: chooseDifficultyHeader;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row: 5; }
-  .header.box-awaiting-games {
-    grid-area: setTimeHeader;
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 7;
-    overflow-y: scroll; }
-    .header.box-awaiting-games .option {
-      font-weight: lighter;
-      padding: 5px;
-      margin: 0; }
-    .header.box-awaiting-games .active {
-      font-weight: bold;
-      color: #EC5252; }
+  font-weight: bold;
+}
+.header.box-chess-color-header {
+  grid-area: chessColorHeader;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 1;
+}
+.header.set-time-header {
+  grid-area: setTimeHeader;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 3;
+}
+.header.choose-difficulty-header {
+  grid-area: chooseDifficultyHeader;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 5;
+}
+.header.box-awaiting-games {
+  grid-area: setTimeHeader;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 7;
+  overflow-y: scroll;
+}
+.header.box-awaiting-games .option {
+  font-weight: lighter;
+  padding: 5px;
+  margin: 0;
+}
+.header.box-awaiting-games .active {
+  font-weight: bold;
+  color: #EC5252;
+}
 
 .option {
   margin: 10px;
   vertical-align: middle;
   line-height: 40px;
-  position: relative; }
-  .option.left {
-    float: right;
-    text-align: center; }
-    .option.left.chess-color-white {
-      grid-area: chessColorWhite;
-      grid-column: 2;
-      grid-row: 2; }
-    .option.left.set-time-yes {
-      grid-area: setTimeYes;
-      grid-column: 2;
-      grid-row: 4; }
-  .option.right {
-    float: left;
-    text-align: center; }
-    .option.right.chess-color-black {
-      grid-area: chessColorBlack;
-      grid-column: 3;
-      grid-row: 2; }
-    .option.right.set-time-no {
-      grid-area: setTimeNo;
-      grid-column: 3;
-      grid-row: 4; }
-  .option.choose-difficulty-option {
-    grid-area: chooseDifficultyOption;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row: 6;
-    width: 130px;
-    margin: auto; }
-    .option.choose-difficulty-option:after {
-      content: "";
-      background: #007791;
-      position: absolute;
-      left: 0%;
-      bottom: 0;
-      width: 100%;
-      height: 4px;
-      border-radius: 3px;
-      opacity: 1.0; }
+  position: relative;
+}
+.option.left {
+  float: right;
+  text-align: center;
+}
+.option.left.chess-color-white {
+  grid-area: chessColorWhite;
+  grid-column: 2;
+  grid-row: 2;
+}
+.option.left.set-time-yes {
+  grid-area: setTimeYes;
+  grid-column: 2;
+  grid-row: 4;
+}
+.option.right {
+  float: left;
+  text-align: center;
+}
+.option.right.chess-color-black {
+  grid-area: chessColorBlack;
+  grid-column: 3;
+  grid-row: 2;
+}
+.option.right.set-time-no {
+  grid-area: setTimeNo;
+  grid-column: 3;
+  grid-row: 4;
+}
+.option.choose-difficulty-option {
+  grid-area: chooseDifficultyOption;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row: 6;
+  width: 130px;
+  margin: auto;
+}
+.option.choose-difficulty-option:after {
+  content: "";
+  background: #007791;
+  position: absolute;
+  left: 0%;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 3px;
+  opacity: 1;
+}
 
 .start-game {
   grid-area: startGame;
   grid-column-start: 2;
   grid-column-end: 4;
-  grid-row: 7; }
+  grid-row: 7;
+}
 
 .difficulty-selector {
   border-radius: 5px;
@@ -381,8 +492,8 @@ button.full {
   width: 86px;
   font-family: Roboto;
   background-color: transparent;
-  padding: 10px; }
-  .difficulty-selector option {
-    text-align-last: center; }
-
-/*# sourceMappingURL=styles.css.map */
+  padding: 10px;
+}
+.difficulty-selector option {
+  text-align-last: center;
+}
