@@ -10,13 +10,13 @@ class ChessGameManager(models.Manager):
 		return super(ChessGameManager, self).get_queryset().order_by("-pk")
 		
 	def games_awaiting_oppontent(self, *args, **kwargs):
-		return self.get_queryset().filter(is_awaiting_opponent=True)
+		return self.get_queryset().filter(start_date__isnull=True)
 		
 	def finished_games(self, *args, **kwargs):
-		return self.get_queryset().filter(is_finished=True)
+		return self.get_queryset().filter(end_date__isnull=False)
 		
 	def currently_played_games(self, *args, **kwargs):
-		return self.get_queryset().filter(is_awaiting_opponent=False, is_finished=False)
+		return self.get_queryset().filter(start_date__isnull=False, end_date__isnull=False)
 
 		
 class ChessGame(models.Model):
@@ -180,13 +180,6 @@ class Side(models.Model):
 		for piece in self.chesspiece_set.all():
 			all_points += piece.type.value
 		return all_points
-		
-	def moves(self):
-		all_moves = []
-		for piece in self.chesspiece_set.all():
-			for move in piece.chesspiecemove_set.all():
-				all_moves.append(move)
-		return all_moves
 		
 	def opposite_side(self):
 		sides = self.chessgame.side_set.all()

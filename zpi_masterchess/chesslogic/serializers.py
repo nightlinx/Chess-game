@@ -14,10 +14,10 @@ class ChessPieceTypeSerializer(serializers.ModelSerializer):
 		fields = ('id', 'name', 'value')
 
 		
-class ChessPieceMoveSerializer(serializers.ModelSerializer):
+class ChessPieceMoveSerializer(serializers.ModelSerializer):	
 	class Meta:
 		model = ChessPieceMove
-		fields = ('id', 'from_field', 'to_field', 'promotion_type', 'time', 'side')
+		fields = ('from_field', 'to_field', 'promotion_type')
 
 		
 class ChessFieldSerializer(serializers.ModelSerializer):

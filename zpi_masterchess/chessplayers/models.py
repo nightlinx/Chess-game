@@ -28,7 +28,7 @@ class Player(models.Model):
 		return all_games
 		
 	def current_chessgame(self):
-		sides = self.side_set.all().filter(chessgame__is_finished=False).order_by('-time')
+		sides = self.side_set.all().filter(chessgame__end_date__isnull=True).order_by('-chessgame__start_date')
 		if sides.count() > 0:
 			return sides.first().chessgame
 		else:

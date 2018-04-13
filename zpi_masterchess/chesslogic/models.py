@@ -1,5 +1,6 @@
 import chess
 from math import ceil
+from django.apps import apps
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import post_save, post_delete
@@ -35,6 +36,18 @@ class ChessPieceType(models.Model):
 		
 	def lib_instance(self):
 		return id
+		
+	def type_and_color(self, color):
+		'''
+			1 : White Pawn			7 : Black Pawn
+			2 : White Knight		8 : Black Knight	
+			3 : White Bishop		9 : Black Bishop
+			4 : White Rook			10 : Black Rook
+			5 : White Queen			11 : Black Queen
+			6 : White King			12 : Black King
+		'''
+		multiplier = 0 if color == apps.get_model('chessgames', 'Side').WHITE else 1
+		return self.id + multiplier * 6
 		
 	class Meta:
 		verbose_name = "rodzaj figury"
