@@ -21,7 +21,11 @@ from django.views.generic import TemplateView
 from chesslogic.views import chessboard_debug_view
 
 urlpatterns = [
-	path('', TemplateView.as_view(template_name="index.html")),
-	path('debug/chessgame/<int:pk>/', chessboard_debug_view),
+	path('api/', include('chesslogic.urls')),
+	path('api/', include('chessgames.urls')),
+	path('api/', include('chessplayers.urls')),
+	path('api/auth/', include('rest_framework.urls')),
+	path('debug/<int:pk>/', chessboard_debug_view),
     path('admin/', admin.site.urls),
+	#path('', TemplateView.as_view(template_name="index.html")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
